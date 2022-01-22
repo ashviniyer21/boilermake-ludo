@@ -117,7 +117,9 @@ socket.on('board-change', function (game) {
     }
     r1 = roll(normalDie);
     rDie1 = randomizeDice();
+    string2.innerHTML = rDie1[0].toString() + ", " + rDie1[1].toString() + ", " + rDie1[2].toString() + ", " + rDie1[3].toString() + ", " + rDie1[4].toString() + ", " + rDie1[5].toString();
     rDie2 = randomizeDice();
+    string3.innerHTML = rDie2[0].toString() + ", " + rDie2[1].toString() + ", " + rDie2[2].toString() + ", " + rDie2[3].toString() + ", " + rDie2[4].toString() + ", " + rDie2[5].toString();
     r2 = roll(rDie1);
     r3 = roll(rDie2);
 });
