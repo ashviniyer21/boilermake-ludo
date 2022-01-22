@@ -6,6 +6,13 @@ button {
     font-size: 30px;
     font-family: "Plantagenet Cherokee", cursive;
 }
+
+hr{
+    height: 2px;
+    background-color: darkblue;
+    border: none;
+}
+
 label {
     font-family: "Plantagenet Cherokee", cursive;
     font-size: 25px;
@@ -62,5 +69,4 @@ div {
 }
 #turn {
     font-size: 50px;
-
 }
