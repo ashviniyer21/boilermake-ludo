@@ -304,7 +304,7 @@ class Game {
 
     changeTurn() {
         this.nameIdx++;
-        if(this.nameIdx === 4) {
+        if(this.nameIdx === this.names.length) {
             this.nameIdx = 0;
         }
         this.turn = this.names[this.nameIdx];
