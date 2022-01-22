@@ -90,16 +90,30 @@ socket.on('start-game', function () {
 });
 
 socket.on('board-change', function (game) {
-    let coordMap = {};
-    turn.innerHTML = game.turn + "'s Turn.";
+    turn.innerHTML = game.turn + "'s Turn. (" + game.color + ")";
+    if(game.turn === nameString) {
+        die1.style.display = "block";
+        die2.style.display = "block";
+        die3.style.display = "block";
+        string1.style.display = "block";
+        string2.style.display = "block";
+        string3.style.display = "block";
+        rollString.style.display = "block";
+    } else {
+        die1.style.display = "none";
+        die2.style.display = "none";
+        die3.style.display = "none";
+        string1.style.display = "none";
+        string2.style.display = "none";
+        string3.style.display = "none";
+        rollString.style.display = "none";
+    }
     for(let i = 0; i < pieces.length; i++) {
         let newPieces = game.pieces;
         let x = newPieces[pieces[i].id].coords[0] * 100.0/3;
         let y = newPieces[pieces[i].id].coords[1] * 100.0/3 - 30 * i;
-        x += coordMap[[x, y]] * 3;
-        coordMap[[x, y]]++;
-        pieces[i].style.top = (x).toString() + "px";
-        pieces[i].style.left = (y).toString() + "px";
+        pieces[i].style.top = (y).toString() + "px";
+        pieces[i].style.left = (x).toString() + "px";
     }
     r1 = roll(normalDie);
     rDie1 = randomizeDice();
@@ -115,7 +129,7 @@ let die1 = document.getElementById("normalDie");
 let die2 = document.getElementById("randomOne");
 let die3 = document.getElementById("randomTwo");
 
-const normalDie = [6, 6, 6, 6, 6, 6];
+const normalDie = [1, 2, 3, 4, 5, 6];
 
 function randomizeDice() {
     let x = [];

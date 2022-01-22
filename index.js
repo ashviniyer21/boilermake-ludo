@@ -1,6 +1,6 @@
 function kill(pieces, piece) {
     let colorAbrInd = ["r", "b", "y", "g"];
-    let colorFullInd = ["Red", "Blue", "Yellow", "Green"];
+    let colorFullInd = ["red", "blue", "yellow", "green"];
 
     let killed = false;
 
@@ -15,9 +15,9 @@ function kill(pieces, piece) {
     for (let x = 0; x < 4; x++) {
         if (piece.color !== colorFullInd[x]) {
             for (let i = 0; i < 4; i++) {
-                if (compareArrs(pieces[colorAbrInd[x] + i].coords, pieces.coords)) {
+                if (compareArrs(pieces[colorAbrInd[x] + i].coords, piece.coords)) {
                     pieces[colorAbrInd[x] + i].location = -1;
-                    pieces[colorAbrInd[x] + i].coords = pieces[colorAbrInd[x + i]].find_coordinates();
+                    pieces[colorAbrInd[x] + i].coords = pieces[colorAbrInd[x] + i].find_coordinates();
                     killed = true;
                 }
             }
@@ -289,6 +289,8 @@ class Game {
         this.nameIdx = 0;
         this.turn = names[0];
         this.pieces = {};
+        this.colors = ["Red", "Blue", "Yellow", "Green"];
+        this.color = this.colors[this.nameIdx];
         for(let i = 0; i < 4; i++) {
             this.pieces["r" + i] = new Piece(i, "red");
             this.pieces["b" + i] = new Piece(i, "blue");
@@ -341,6 +343,7 @@ class Game {
             this.nameIdx = 0;
         }
         this.turn = this.names[this.nameIdx];
+        this.color = this.colors[this.nameIdx];
     }
 }
 
@@ -414,7 +417,26 @@ http.listen(PORT, () => {
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
-})
+});
+
+const { networkInterfaces } = require('os');
+
+const nets = networkInterfaces();
+const results = Object.create(null); // Or just '{}', an empty object
+
+for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+        // Skip over non-IPv4 and internal (i.e. 127.0.0.1) addresses
+        if (net.family === 'IPv4' && !net.internal) {
+            if (!results[name]) {
+                results[name] = [];
+            }
+            results[name].push(net.address);
+        }
+    }
+}
+
+console.log(results);
 
 function generateId() {
     return Math.floor(Math.random() * 10000).toString();
