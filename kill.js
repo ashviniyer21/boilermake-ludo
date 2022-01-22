@@ -2,11 +2,13 @@ function kill(pieces, piece) {
      let colorAbrInd = ["r", "b", "y", "g"];
      let colorFullInd = ["Red", "Blue", "Yellow", "Green"];
 
+     let killed = false;
+
      let safeSpaceX = [[0, 4], [4, 0], [10, 0], [0, 10], [14, 4], [4, 14], [14, 10], [10, 14]];
 
      for (let x = 0; x < safeSpaceX.length; x++) {
           if (compareArrs(piece.coords, safeSpaceX[x])) {
-               return;
+               return false;
           }
      }
 
@@ -16,10 +18,13 @@ function kill(pieces, piece) {
                     if (compareArrs(pieces[colorAbrInd[x] + i].coords, pieces.coords)) {
                          pieces[colorAbrInd[x] + i].location = -1;
                          pieces[colorAbrInd[x] + i].coords = pieces[colorAbrInd[x + i]].find_coordinates();
+                         killed = true;
                     }
                }
           }
      }
+
+     return killed;
 }
 
 function compareArrs(arr1, arr2) {
