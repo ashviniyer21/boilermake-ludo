@@ -1,0 +1,8 @@
+{
+  "name": "Ludo Master",
+  "description": "Customized Multiplayer Ludo Game for Boilermake 2022",
+  "repository": "https://github.com/ashviniyer21/boilermake-ludo",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/main/public/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
