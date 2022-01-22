@@ -46,16 +46,30 @@
     <br><br><br>
     <hr><hr>
     <center><p id="turn"></p></center>
-    <div id="Dice">
-        <input type="image" src="Dice.png" id="normalDie" width="150" height="150"/>
-        <input type="image" src="Dice.png" id="randomOne" width="150" height="150"/>
-        <input type="image" src="Dice.png" id="randomTwo" width="150" height="150"/>
+    <table id="Dice">
+        <tr>
+            <td>
+                <figure>
+                    <input type="image" src="Dice.png" id="normalDie" width="150" height="150"/>
+                    <figcaption id="Die1Contents"></figcaption>
+                </figure>
+            </td>
+            <td>
+                <figure>
+                    <input type="image" src="Dice.png" id="randomOne" width="150" height="150"/>
+                    <figcaption id="Die2Contents"></figcaption>
+                </figure>
+            </td>
+            <td>
+                <figure>
+                    <input type="image" src="Dice.png" id="randomTwo" width="150" height="150"/>
+                    <figcaption id="Die3Contents"></figcaption>
+                </figure>
+            </td>
+        </tr>
         <script src="dieChoice.js"></script>
-        <p id="Die1Contents"></p>
-        <p id="Die2Contents"></p>
-        <p id="Die3Contents"></p>
         <p id="RollOutput"></p>
-    </div>
+    </table>
     <hr><hr>
     <script src="client.js"></script>
 </body>
