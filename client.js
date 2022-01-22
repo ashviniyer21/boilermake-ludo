@@ -191,3 +191,11 @@ die3.addEventListener("click", function () {
     rollString.innerHTML = "You rolled a " + roll.toString();
     socket.emit('roll', gameId, roll);
 });
+
+die1.style.display = "none";
+die2.style.display = "none";
+die3.style.display = "none";
+string1.style.display = "none";
+string2.style.display = "none";
+string3.style.display = "none";
+rollString.style.display = "none";
