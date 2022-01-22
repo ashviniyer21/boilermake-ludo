@@ -30,6 +30,10 @@ io.on('connection', (socket) => {
        map.get(id).push(name);
         io.to(id).emit('player-join', map.get(id));
     });
+
+    socket.on('start', (id) => {
+       io.to(id).emit('start-game');
+    });
 });
 
 http.listen(PORT, () => {

@@ -7,3 +7,18 @@ button {
 label {
 
 }
+
+.board {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.piece {
+    position: relative;
+    display: inline;
+}
+
+div {
+    position: relative;
+}
