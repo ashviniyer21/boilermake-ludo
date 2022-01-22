@@ -20,6 +20,8 @@ function randomizeDice() {
     return x;
 }
 
+const normalDie = [1, 2, 3, 4, 5, 6];
+
 function roll(dice) {
     return dice[(Math.random() * 6) | 0];
 }
