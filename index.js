@@ -217,7 +217,7 @@ class Piece {
                     x = 4;
                     y = 20 - location;
                 } else if (20 < location && location < 26) {
-                    x = location - 26;
+                    x = location - 16;
                     y = 0;
                 } else if (25 < location && location < 30) {
                     x = 10;
