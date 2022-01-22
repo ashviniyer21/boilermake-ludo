@@ -91,4 +91,82 @@ socket.on('start-game', function () {
 
 socket.on('board-change', function (game) { //TODO write fully
     turn.innerHTML = game.turn + "'s Turn.";
+    for(let i = 0; i < pieces.length; i++) {
+        let newPieces = game.pieces;
+        pieces[i].style.top = (newPieces[pieces[i].id].coords[1] * 100.0/3 - 30 * i).toString() + "px";
+        pieces[i].style.left = (newPieces[pieces[i].id].coords[0] * 100.0/3).toString() + "px";
+    }
+    r1 = roll(normalDie);
+    rDie1 = randomizeDice();
+    rDie2 = randomizeDice();
+    r2 = roll(rDie1);
+    r3 = roll(rDie2);
+});
+
+let rDie1 = randomizeDice();
+let rDie2 = randomizeDice();
+
+let die1 = document.getElementById("normalDie");
+let die2 = document.getElementById("randomOne");
+let die3 = document.getElementById("randomTwo");
+
+const normalDie = [6, 6, 6, 6, 6, 6];
+
+function randomizeDice() {
+    let x = [];
+    let numsUsed = {};
+
+    for (let i = 1; i < 7; i++) {
+        numsUsed[i] = 0;
+    }
+
+    for (let i = 0; i < 6; i++) {
+        let temp = (Math.random() * 6 + 1) | 0;
+
+        if (numsUsed[temp] > 2) {
+            i--;
+        } else {
+            x.push(temp);
+            numsUsed[temp]++;
+        }
+    }
+
+    return x;
+}
+
+function roll(dice) {
+    return dice[(Math.random() * 6) | 0];
+}
+
+let string1 = document.getElementById("Die1Contents");
+string1.innerHTML = normalDie[0].toString() + ", " + normalDie[1].toString() + ", " + normalDie[2].toString() + ", " + normalDie[3].toString() + ", " + normalDie[4].toString() + ", " + normalDie[5].toString();
+
+let string2 = document.getElementById("Die2Contents");
+string2.innerHTML = rDie1[0].toString() + ", " + rDie1[1].toString() + ", " + rDie1[2].toString() + ", " + rDie1[3].toString() + ", " + rDie1[4].toString() + ", " + rDie1[5].toString();
+
+let string3 = document.getElementById("Die3Contents");
+string3.innerHTML = rDie2[0].toString() + ", " + rDie2[1].toString() + ", " + rDie2[2].toString() + ", " + rDie2[3].toString() + ", " + rDie2[4].toString() + ", " + rDie2[5].toString();
+
+let rollString = document.getElementById("RollOutput");
+
+let r1 = roll(normalDie);
+let r2 = roll(rDie1);
+let r3 = roll(rDie2);
+
+die1.addEventListener("click", function () {
+    let roll = r1;
+    rollString.innerHTML = "You rolled a " + roll.toString();
+    socket.emit('roll', gameId, roll);
+});
+
+die2.addEventListener("click", function () {
+    let roll = r2;
+    rollString.innerHTML = "You rolled a " + roll.toString();
+    socket.emit('roll', gameId, roll);
+});
+
+die3.addEventListener("click", function () {
+    let roll = r3;
+    rollString.innerHTML = "You rolled a " + roll.toString();
+    socket.emit('roll', gameId, roll);
 });
