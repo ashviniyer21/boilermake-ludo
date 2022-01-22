@@ -7,19 +7,23 @@
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
 </head>
 <body>
-    <center><H1 style="padding: 10px; border: 2px solid orange;">Ludo: An evolved way of playing Sorry</H1>
+    <center><H1 style="padding: 10px; border: 2px solid orange;text-shadow: 2px 2px grey">Ludo: An evolved way of playing Sorry</H1>
         <button id="create">Create Game</button>
-        <button id="join">Join Game</button>
+        <button id="join">Join Game</button></center>
         <br><br><br>
-        <label for="name" id="nameLabel">Name: </label><input type="text" id="name">
-        <label for="name" id="idLabel">Id: </label><input type="text" id="id">
+    <center><label for="name" id="nameLabel">Name: </label><input type="text" id="name">
         <br><br>
+        <label for="name" id="idLabel">Id: </label><input type="text" id="id"></center>
+        <br><br>
+    <center>
         <button id="submit">Submit</button>
-            <button id="start">Start</button></center>
-        <p id="message"></p>
+        <br><br>
+        <button id="start">Start</button></center>
+
+        <center><p id="message"></p></center>
     <div>
         <center><img src="LudoBoard.png" width="500" height="500" id="board" class="board" border=""></center>
-        <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b0" alt="img" >
+        <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b0" alt="img">
         <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b1" alt="img">
         <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b2" alt="img">
         <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b3" alt="img">
