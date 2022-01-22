@@ -12,6 +12,10 @@ label {
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    border-width: 70px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .piece {
