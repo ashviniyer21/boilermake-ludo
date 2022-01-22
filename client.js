@@ -89,12 +89,17 @@ socket.on('start-game', function () {
     }
 });
 
-socket.on('board-change', function (game) { //TODO write fully
+socket.on('board-change', function (game) {
+    let coordMap = {};
     turn.innerHTML = game.turn + "'s Turn.";
     for(let i = 0; i < pieces.length; i++) {
         let newPieces = game.pieces;
-        pieces[i].style.top = (newPieces[pieces[i].id].coords[1] * 100.0/3 - 30 * i).toString() + "px";
-        pieces[i].style.left = (newPieces[pieces[i].id].coords[0] * 100.0/3).toString() + "px";
+        let x = newPieces[pieces[i].id].coords[0] * 100.0/3;
+        let y = newPieces[pieces[i].id].coords[1] * 100.0/3 - 30 * i;
+        x += coordMap[[x, y]] * 3;
+        coordMap[[x, y]]++;
+        pieces[i].style.top = (x).toString() + "px";
+        pieces[i].style.left = (y).toString() + "px";
     }
     r1 = roll(normalDie);
     rDie1 = randomizeDice();
