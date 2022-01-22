@@ -15,18 +15,63 @@ class Piece {
     find_coordinates(index, color, location) {
         let x = 0;
         let y = 0;
+        let colors = ["red", "blue", "yellow", "green"];
         if (location === -1) {
-            let colors = ["red", "blue", "yellow", "green"];
             let colorDis = [[0, 0], [11, 0], [11, 11], [0, 11]];
-            let indexDis = [[0.5, 0.5], [2.5, 0.5], [2.5, 2.5], [0.5, 2.5]];
+            let indexDis = [[0, 0], [3, 0], [3, 3], [0, 3]];
 
             x = indexDis[index][0] + colorDis[colors.indexOf(color)][0];
             y = indexDis[index][1] + colorDis[colors.indexOf(color)][1];
         } else {
+            if (color === "red") {
+                if (-1 < location < 4) {
+                    x = location;
+                    y = 4;
+                } else if (3 < location < 8) {
+                    x = 4;
+                    y = 7 - location;
+                } else if (7 < location < 13) {
+                    x = location - 3;
+                    y = 0;
+                } else if (12 < location < 17) {
+                    x = 10;
+                    y = location - 13;
+                } else if (16 < location < 21) {
+                    x = location - 6;
+                    y = 4;
+                } else if (20 < location < 26) {
+                    x = 14;
+                    y = location - 16;
+                } else if (25 < location < 30) {
+                    x = 40 - location;
+                    y = 10;
+                } else if (29 < location < 34) {
+                    x = 10;
+                    y = location - 19;
+                } else if (33 < location < 39) {
+                    x = 42 - location;
+                    y = 14;
+                } else if (38 < location < 43) {
+                    x = 4;
+                    y = 53 - location;
+                } else if (42 < location < 47) {
+                    x = 46 - location;
+                    y = 10;
+                } else if (46 < location < 50) {
+                    x = 0;
+                    y = 56 - location;
+                } else if (49 < location < 56) {
+                    x = location - 49;
+                    y = 7;
+                } else if (location === 56) {
+                    let colorDis = [[0, 0], [3, 0], [3, 3], [0, 3]];
+                    let indexDis = [[5, 5], [6, 5], [6, 6], [5, 6]];
 
+                    x = indexDis[index][0] + colorDis[colors.indexOf(color)][0];
+                    y = indexDis[index][1] + colorDis[colors.indexOf(color)][1];
+                }
+            }
         }
-
-
         return [x, y]
     }
 
