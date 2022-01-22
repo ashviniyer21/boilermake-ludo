@@ -14,7 +14,17 @@ let idLabel = document.getElementById("idLabel");
 
 let text = document.getElementById("message");
 
+let board = document.getElementById("board");
+
+let pieces = document.getElementsByClassName("piece");
+
+for(let i = 0; i < pieces.length; i++) {
+    pieces[i].style.display = "none";
+}
+
 let gameId = "";
+
+let nameString = "";
 
 name.style.display = "None";
 nameLabel.style.display = "None";
@@ -22,6 +32,7 @@ submitButton.style.display = "None";
 id.style.display = "None";
 idLabel.style.display = "None";
 startButton.style.display = "None";
+board.style.display = "None";
 
 createButton.onclick = function () {
     name.style.display = "Block";
@@ -45,6 +56,11 @@ submitButton.onclick = function () {
         gameId = id.value;
         socket.emit('join', name.value, id.value);
     }
+    nameString = name.value;
+}
+
+startButton.onclick = function () {
+    socket.emit('start', gameId);
 }
 
 socket.on('create-success', function (id) {
@@ -58,5 +74,15 @@ socket.on('player-join', function (players) {
     for(let i = 0; i < list.length; i++) {
         console.log(list[i]);
         text.innerHTML += "<br>" + list[i];
+    }
+});
+
+socket.on('start-game', function () {
+   board.style.display = "block";
+    for(let i = 0; i < pieces.length; i++) {
+        pieces[i].style.display = "block";
+        // let coord = (i * 50).toString();
+        // pieces[i].style.top = coord + "px";
+        // pieces[i].style.left = coord + "px";
     }
 });
