@@ -29,3 +29,27 @@ label {
 div {
     position: relative;
 }
+
+#message {
+    font-size: 15px;
+}
+
+#nameLabel {
+    font-family: Plantagenet Cherokee,cursive;
+    font-size: 30px;
+}
+
+#idLabel {
+    font-family: Plantagenet Cherokee,cursive;
+    font-size: 30px;
+}
+
+#name {
+    font-family: Plantagenet Cherokee,cursive;
+    font-size: 25px;
+}
+
+#id {
+    font-family: Plantagenet Cherokee,cursive;
+    font-size: 25px;
+}
