@@ -18,6 +18,8 @@ let board = document.getElementById("board");
 
 let pieces = document.getElementsByClassName("piece");
 
+let turn = document.getElementById("turn");
+
 for(let i = 0; i < pieces.length; i++) {
     pieces[i].style.display = "none";
 }
@@ -81,8 +83,12 @@ socket.on('start-game', function () {
    board.style.display = "block";
     for(let i = 0; i < pieces.length; i++) {
         pieces[i].style.display = "block";
-        // let coord = (i * 50).toString();
-        // pieces[i].style.top = coord + "px";
-        // pieces[i].style.left = coord + "px";
+        pieces[i].addEventListener("click", ()=> {
+           socket.emit('move', gameId, pieces[i].id);
+        });
     }
+});
+
+socket.on('board-change', function (game) { //TODO write fully
+    turn.innerHTML = game.turn + "'s Turn.";
 });

@@ -7,16 +7,15 @@
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
 </head>
 <body>
-    <button id="create">Create Game</button>
-    <button id="join">Join Game</button>
+    <center><button id="create">Create Game</button>
+    <button id="join">Join Game</button></center>
     <label for="name" id="nameLabel">Name: </label><input type="text" id="name">
     <label for="name" id="idLabel">Id: </label><input type="text" id="id">
     <button id="submit">Submit</button>
     <p id="message"></p>
     <button id="start">Start</button>
     <div>
-        <center><img src="LudoBoard.png" width="500" height="500" id="board" class="board"></center>
-
+        <center><img src="LudoBoard.png" width="500" height="500" id="board" class="board" border=""></center>
         <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b0" alt="img" >
         <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b1" alt="img">
         <input type="image" src="Blue.png" width="30" height="30" class="piece" id="b2" alt="img">
@@ -36,6 +35,9 @@
         <input type="image" src="Green.png" width="30" height="30" class="piece" id="g1" alt="img">
         <input type="image" src="Green.png" width="30" height="30" class="piece" id="g2" alt="img">
         <input type="image" src="Green.png" width="30" height="30" class="piece" id="g3" alt="img">
+    </div>
+    <p id="turn"></p>
+    <div id="Dice">
     </div>
     <script src="client.js"></script>
 </body>
